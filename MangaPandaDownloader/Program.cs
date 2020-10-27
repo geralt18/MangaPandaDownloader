@@ -20,8 +20,6 @@ namespace KLCWDownloader {
          ServicePointManager.DefaultConnectionLimit = threads;
          ServicePointManager.Expect100Continue = false;
 
-
-
          DownloadMangaPanda(750);
       }
 
@@ -30,7 +28,7 @@ namespace KLCWDownloader {
          string baseUrl = "http://manga-panda.xyz/naruto-chapter-";
          //string baseUrl = "http://manga-panda.xyz/naruto-full-color-chapter-";
 
-         for(int chapter = 637; chapter <= maxChapter; chapter++) {
+         for(int chapter = 1; chapter <= maxChapter; chapter++) {
             string chapterUrl = string.Format("{0}{1}", baseUrl, chapter);
             string chapterPath = string.Format(@"{0}{1:D3}\", basePath, chapter);
             _logger.Trace("Przetwarzam stronę {0}", chapterUrl);
@@ -60,9 +58,6 @@ namespace KLCWDownloader {
          }
       }
 
-
-
-
       static bool DownloadImage(string path, string url, string name) {
          bool ret = false;
          string filePath = Path.Combine(path, CleanFileName(name?.Trim()));
@@ -88,7 +83,6 @@ namespace KLCWDownloader {
          }
          return ret;
       }
-
 
       static string CleanFileName(string name) {
          foreach(char c in System.IO.Path.GetInvalidFileNameChars())
